@@ -71,11 +71,15 @@ export const updateSoftwares = async(req, res) => {
     //se intento actualizar un registro con id inexistente
     if (results.affectedRows == 0){
       return res.status(404).json({
+        status: false,
         message: 'El ID no existe'
       })
+    }else{
+      return res.send({
+        status: true,
+        mesage: "Registrado actualizado",
+      })
     }
-
-    res.send("Actualizado correctamente")
   }
   catch{
     console.error("No se pudo concretar PUT")
@@ -92,11 +96,16 @@ export const deleteSoftwares = async (req, res) => {
     //no se pudo eliminar...
     if (results.affectedRows == 0){
       return res.status(404).json({
+        status: false,
         message: 'El ID enviado NO existe'
       })
-    }
+    }else{
+      return res.send({
+        status:true,
+        message:'eliminado correctamente'
+      })
 
-    res.send({ message: 'Eliminado correctamente' })
+    }
   }
   catch{
     console.error("No se pudo concretar DELETE")
