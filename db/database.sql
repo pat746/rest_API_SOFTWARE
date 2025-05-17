@@ -1,5 +1,6 @@
 CREATE DATABASE  appstore;
 
+
 USE appstore;
 
 CREATE TABLE softwares
